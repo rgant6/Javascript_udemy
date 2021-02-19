@@ -23,5 +23,5 @@ let convertFahrenheitToCelcius = function(temp){
     return celcius
 }
 
-console.log(convertFahrenheitToCelcius(32))
 console.log(convertFahrenheitToCelcius(68))
+console.log(convertFahrenheitToCelcius(32))
