@@ -12,3 +12,5 @@ let square = function (num){
 }
 
 square()
+
+let age = 27
