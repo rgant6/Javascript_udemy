@@ -20,3 +20,9 @@ let getTip = function (money,percent=20){
 console.log("$"+getTip(40,15))
 console.log("$"+getTip(100,10))
 
+console.log("Ryan" + " Gant")
+
+// template string
+let name = "Ryan"
+let age = "27"
+console.log(`My name is ${name}. I am ${age} years old`)
