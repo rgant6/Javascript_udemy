@@ -6,7 +6,8 @@ let result = add(10,1,5)
 console.log(result)
 
 let getScoreText = function (name = "Anonymous",score=0) {
-  return "Name: "+name+ " | Score: "+score
+//   return "Name: "+name+ " | Score: "+score
+    return `Name: ${name}. Score: ${score}`
 }
 
 let scoreText = getScoreText(undefined,99)
@@ -14,15 +15,9 @@ console.log(scoreText)
 
 let getTip = function (money,percent=20){
     let tip = money * (percent/100)
-    return tip
+    return `${percent}% Tip on $${money}, would be $${tip}`
 }
 
-console.log("$"+getTip(40,15))
-console.log("$"+getTip(100,10))
+console.log(getTip(40,15))
+console.log(getTip(100,10))
 
-console.log("Ryan" + " Gant")
-
-// template string
-let name = "Ryan"
-let age = "27"
-console.log(`My name is ${name}. I am ${age} years old`)
