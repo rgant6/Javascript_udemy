@@ -1,5 +1,5 @@
-let gradeCalculator = function (studentScore,totalScore){
-    let score = (studentScore/totalScore)*100
+const gradeCalculator = function (studentScore,totalScore){
+    const score = (studentScore/totalScore)*100
     let grade = ""
     
     if (score >= 90 ){
