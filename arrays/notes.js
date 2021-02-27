@@ -28,3 +28,22 @@ notes.forEach(function (x,index){
 
 console.log(notes.length)
 console.log(notes)
+
+// counting-for loop with the variable and then condition after semi colon then the function after the next semi colon
+for (let count = 0; count<=2; count++){
+    console.log(`counting: ${count}...`)
+}
+
+for (let count = 2; count >= 0; count--) {
+    console.log(`counting: ${count}...`)
+}
+
+// note: count is scoped locally
+// coping the for each below
+for (let count = 0; count< notes.length; count ++){
+    console.log(notes[count])
+}
+
+for (let count = notes.length-1; count >= 0; count--) {
+    console.log(notes[count])
+}
