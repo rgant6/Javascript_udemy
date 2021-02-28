@@ -1,5 +1,5 @@
 // array of objects
-const notes = [{},{
+const notes = [{
     title: "My next trip",
     body: "I would like to go to Spain"
 },{
@@ -9,6 +9,17 @@ const notes = [{},{
     title: "Home Improvments",
     body: "Build Porch"
 }]
+
+const findNote = function (notes, noteTitle) {
+    const index = notes.findIndex(function (note,index) {
+        return note.title.toLowerCase() === noteTitle.toLowerCase()
+    })
+    return notes[index]    
+}
+
+const note = findNote(notes,"habits to work on")
+console.log(note)
+
 
 // MDN array is the documentation
 
@@ -59,18 +70,18 @@ const notes = [{},{
 // // search for location of object in array; negative 1 returns for non-existing objects
 // console.log("position: ",notes.indexOf("Note 7"))
 
-console.log(notes.length)
-console.log(notes)
-console.log(notes.indexOf({}))
+// console.log(notes.length)
+// console.log(notes)
+// console.log(notes.indexOf({}))
 
-// {} === {} will return false
-// But the below will show true
-let someObject = {}
-let otherObject = someObject
-console.log(otherObject === someObject)
+// // {} === {} will return false
+// // But the below will show true
+// let someObject = {}
+// let otherObject = someObject
+// console.log(otherObject === someObject)
 
-const index = notes.findIndex(function (note, index){
-    console.log(index)
-    return note.title ==="Habits to work on"
-})
-console.log(index)
+// const index = notes.findIndex(function (note, index){
+//     console.log(index)
+//     return note.title ==="Habits to work on"
+// })
+// console.log(index)
