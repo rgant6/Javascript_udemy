@@ -6,7 +6,7 @@ const notes = [{
     title: "Habits to work on",
     body: "Eat healthy"
 },{
-    title: "Home Improvments",
+    title: "Home Improvments next",
     body: "Build Porch"
 }]
 
@@ -16,6 +16,18 @@ const findNote = function (notes, noteTitle) {
         return note.title.toLowerCase() === noteTitle.toLowerCase()
     })
 }
+// trying to make an array filter function. If you search "trip" you'd get back one
+
+const findNotes = function(notes,query){
+    return notes.filter(function (note, index){
+        const isTitleMatch = note.title.toLowerCase().includes(query.toLowerCase())
+        const isBodyMatch = note.body.toLowerCase().includes(query.toLowerCase())
+        return isTitleMatch || isBodyMatch
+    })
+}
+
+console.log(findNotes(notes,"build"))
+
 
 // const findNote = function (notes, noteTitle) {
 //     const index = notes.findIndex(function (note,index) {
@@ -26,8 +38,8 @@ const findNote = function (notes, noteTitle) {
 
 // The function "find" does exactly what we built above
 
-const note = findNote(notes,"habits to work on")
-console.log(note)
+// const note = findNote(notes,"habits to work on")
+// console.log(note)
 
 // MDN array is the documentation
 

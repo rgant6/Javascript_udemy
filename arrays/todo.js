@@ -30,6 +30,16 @@ const deleteTodo = function(todoList, todoTitle){
     }
 }
 
+const getThingsToDo = function (todos){
+    return todos.filter(function (todo){
+        return !todo.completed
+    })
+}
+
+console.log(getThingsToDo(todo))
+
+// create function just the todos that have yet to be completed
+
 deleteTodo(todo, "dont dinner")
 console.log(todo)
 // todo.splice(2,1)
