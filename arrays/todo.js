@@ -28,7 +28,23 @@ const deleteTodo = function(todoList, todoTitle){
     } else {
         console.log("Either the task is not completed, or does not exist")
     }
+} 
+
+const sortTodos = function (todos) {
+    todos.sort(function (a,b){
+        if (a.completed === true && b.completed != true){
+            return 1
+            // you dont need to code in a.completed === since its already boolean
+        } else if (!a.completed && b.completed){
+            return -1
+        } else {
+            return 0
+        }
+    })
 }
+
+sortTodos(todo)
+console.log(todo)
 
 const getThingsToDo = function (todos){
     return todos.filter(function (todo){
@@ -36,12 +52,12 @@ const getThingsToDo = function (todos){
     })
 }
 
-console.log(getThingsToDo(todo))
+// console.log(getThingsToDo(todo))
 
 // create function just the todos that have yet to be completed
 
-deleteTodo(todo, "dont dinner")
-console.log(todo)
+// deleteTodo(todo, "dont dinner")
+// console.log(todo)
 // todo.splice(2,1)
 // todo.push("Clean the garage")
 // todo.shift()
