@@ -9,6 +9,20 @@ const notes = [{
     body: "Build Porch"
 }]
 
+const filters = {
+    searchText:''
+    
+}
+
+const renderNotes = function (notes, filter) {
+    const filteredNotes = notes.filter(function(note){
+        return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
+    })
+    console.log(filteredNotes)
+}
+
+renderNotes(notes,filters)
+
 // event handlers
 document.querySelector("#create").addEventListener('click',function (e) {
     // changes the element for the actual target
@@ -27,6 +41,11 @@ document.querySelector("#remove").addEventListener('click', function (){
     })
 })
 
+document.querySelector('#search-text').addEventListener('input',function(e){
+    filters.searchText = (e.target.value)
+    renderNotes(notes,filters)
+
+})
 // DOM - Document Object Model
 
 // representation of the paragraph element

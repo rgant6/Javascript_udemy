@@ -45,6 +45,10 @@ todo.forEach(function (todo){
     } 
 })
 
+document.querySelector("#new_todo").addEventListener('input',function(e){
+    console.log(e.target.value)
+})
+
 document.querySelector('#create_todo').addEventListener('click', function (e) {
     // changes the element for the actual target
     // e.target.textContent = "The button was clicked"
