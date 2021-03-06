@@ -18,7 +18,16 @@ const renderNotes = function (notes, filter) {
     const filteredNotes = notes.filter(function(note){
         return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
     })
-    console.log(filteredNotes)
+
+    document.querySelector('#notes').innerHTML = ''
+
+    filteredNotes.forEach(function (note){
+        const noteE1 = document.createElement('p')
+        noteE1.textContent = note.title
+        noteE1.className = "note"
+
+        document.querySelector('#notes').appendChild(noteE1)
+    })
 }
 
 renderNotes(notes,filters)
@@ -28,16 +37,22 @@ document.querySelector("#create").addEventListener('click',function (e) {
     // changes the element for the actual target
     // e.target.textContent = "The button was clicked"
     let title = window.prompt("Please enter a note title")
+    let body = window.prompt("Please enter a note body")
+    notes.push({
+        title: title,
+        body: body})
+    console.log(notes)
     const newNote = document.createElement('p')
     newNote.className = "note"
     newNote.textContent = title
-    document.querySelector("#create").before(newNote)
+    document.querySelector("#notes").appendChild(newNote)
 })
 
 document.querySelector("#remove").addEventListener('click', function (){
 // #is for id and . is for classes   
     document.querySelectorAll("p.note").forEach(function (note){
         note.remove()
+    
     })
 })
 
