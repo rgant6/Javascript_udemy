@@ -48,19 +48,16 @@ document.querySelector("#create").addEventListener('click',function (e) {
     document.querySelector("#notes").appendChild(newNote)
 })
 
-document.querySelector("#remove").addEventListener('click', function (){
-// #is for id and . is for classes   
-    document.querySelectorAll("p.note").forEach(function (note){
-        note.remove()
-    
-    })
-})
-
 document.querySelector('#search-text').addEventListener('input',function(e){
     filters.searchText = (e.target.value)
     renderNotes(notes,filters)
-
 })
+
+document.querySelector("#name-form").addEventListener('submit',function (e) {
+    e.preventDefault()
+    console.log(e.target.elements.firstName.value)
+})
+
 // DOM - Document Object Model
 
 // representation of the paragraph element
@@ -85,3 +82,12 @@ document.querySelector('#search-text').addEventListener('input',function(e){
 // document.querySelector('body').appendChild(newParagraph)
 
 // The code above doesn't see the paragraph just added so it doesn't censor it
+
+
+// document.querySelector("#remove").addEventListener('click', function (){
+// // #is for id and . is for classes   
+//     document.querySelectorAll("p.note").forEach(function (note){
+//         note.remove()
+
+//     })
+// })

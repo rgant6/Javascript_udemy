@@ -7,12 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <input id = "new_todo" type="text" placeholder="Add Todo">
+    
     <input id="filter_todo" type="text" placeholder="Filter Todos">
-    <h1>Todos</h1>
-
-    <div id = "new_todos"></div>
-    <button id = "create_todo">Create Todo</button>
+    <h1 id = "header">Todos</h1>
+    
+    <div id="new_todos"></div>
+    <form id="todo-text">
+        <input type="text" placeholder="Add Todo" name = "todoTitle">
+        <button>Submit</button>
+    </form>
     <script src = "todo-app.js"></script>
 </body>
 </html>
