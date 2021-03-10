@@ -1,5 +1,5 @@
 const todo = [{
-    title: "Make the bed",
+    title: "Go Make the bed",
     completed: true
 }, {
     title: "Eat Breakfast",
@@ -17,7 +17,8 @@ const todo = [{
 
 
 const filters = {
-    searchText: ''
+    searchText: '',
+    checked: false
 }
 
 document.querySelector("#filter_todo").addEventListener('input',function (e){
@@ -29,15 +30,25 @@ const renderedTodos = function (todos, filter) {
     const filteredItems = todos.filter(function (todo) {
         return todo.title.toLowerCase().includes(filter.searchText.toLowerCase())
     })
-
-    const incompleteTodos = filteredItems.filter(function (todos) {
+    let incompleteTodos = {}
+    if (filters.checked){
+        
+        incompleteTodos = filteredItems.filter(function (todos) {
+            return !todos.completed
+    })}else{
+       
+        incompleteTodos = filteredItems.filter(function (todos) {
+            return todos
+    })}
+    
+    const countTodosLeft = filteredItems.filter(function (todos) {
         return !todos.completed
     })
-    
+
     document.querySelector('#new_todos').innerHTML = ''
 
     const newParagraph = document.createElement('h2')
-    newParagraph.textContent = `There ${incompleteTodos.length} todos left to finish`
+    newParagraph.textContent = `There ${countTodosLeft.length} todos left to finish`
     document.querySelector('#new_todos').appendChild(newParagraph)
 
     incompleteTodos.forEach(function (todo) {
@@ -65,6 +76,11 @@ function addTodoFunc (todos,todoToAdd) {
     })
     renderedTodos(todos,filters)
 }
+
+document.querySelector("#hide-completed").addEventListener("change", function (e){
+    filters.checked = e.target.checked
+    renderedTodos(todo,filters)
+})
 
 // const ps = document.querySelectorAll("p")
 

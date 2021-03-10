@@ -14,6 +14,13 @@ const filters = {
     
 }
 
+// check for existing saved data
+let notesJSON = localStorage.getItem('notes')
+
+if (notesJSON !== null) {
+    notes = JSON.parse(notesJSON)
+}
+
 const renderNotes = function (notes, filter) {
     const filteredNotes = notes.filter(function(note){
         return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
@@ -23,6 +30,13 @@ const renderNotes = function (notes, filter) {
 
     filteredNotes.forEach(function (note){
         const noteE1 = document.createElement('p')
+        
+        if (note.title.length > 0) {
+            noteE1.textContent = note.title
+        } else (
+            noteE1.textContent = 'Unnamed Note'
+        )
+
         noteE1.textContent = note.title
         noteE1.className = "note"
 
@@ -36,16 +50,12 @@ renderNotes(notes,filters)
 document.querySelector("#create").addEventListener('click',function (e) {
     // changes the element for the actual target
     // e.target.textContent = "The button was clicked"
-    let title = window.prompt("Please enter a note title")
-    let body = window.prompt("Please enter a note body")
+    
     notes.push({
-        title: title,
-        body: body})
-    console.log(notes)
-    const newNote = document.createElement('p')
-    newNote.className = "note"
-    newNote.textContent = title
-    document.querySelector("#notes").appendChild(newNote)
+        title: '',
+        body: ''})
+    localStorage.setItem('notes',JSON.stringify(notes))
+    renderNotes(notes,filters)
 })
 
 document.querySelector('#search-text').addEventListener('input',function(e){
@@ -53,10 +63,17 @@ document.querySelector('#search-text').addEventListener('input',function(e){
     renderNotes(notes,filters)
 })
 
-document.querySelector("#name-form").addEventListener('submit',function (e) {
-    e.preventDefault()
-    console.log(e.target.elements.firstName.value)
+document.querySelector("#filter-by").addEventListener("change",function (e){
+    console.log(e.target.value)
 })
+// document.querySelector("#for-fun").addEventListener("change", function (e){
+//     console.log(e.target.checked)
+// })
+
+// document.querySelector("#name-form").addEventListener('submit',function (e) {
+//     e.preventDefault()
+//     console.log(e.target.elements.firstName.value)
+// })
 
 // DOM - Document Object Model
 
@@ -91,3 +108,11 @@ document.querySelector("#name-form").addEventListener('submit',function (e) {
 
 //     })
 // })
+
+// crud - create read update and delete - need to perform these operations
+// localStorage is provided in same way document is
+// create: localStorage.setItem('location','Chicago')
+// console.log(localStorage.getItem('location'))
+
+// localStorage.removeItem('location')
+// localStorage.clear()
