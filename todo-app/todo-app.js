@@ -1,24 +1,13 @@
-const todo = [{
-    title: "Go Make the bed",
-    completed: true
-}, {
-    title: "Eat Breakfast",
-    completed: false
-}, {
-    title: "Make Coffee",
-    completed: true
-}, {
-    title: "Go shopping",
-    completed: false
-}, {
-    title: "Eat Dinner",
-    completed: false
-}]
-
+let todo = []
 
 const filters = {
     searchText: '',
     checked: false
+}
+
+const todoJSON = localStorage.getItem("todos")
+if (todoJSON != null){
+    todo = JSON.parse(todoJSON)
 }
 
 document.querySelector("#filter_todo").addEventListener('input',function (e){
@@ -53,7 +42,9 @@ const renderedTodos = function (todos, filter) {
 
     incompleteTodos.forEach(function (todo) {
         const p1 = document.createElement('p')
+
         p1.textContent = todo.title
+        
         p1.className = "todo"
 
         document.querySelector("#new_todos").appendChild(p1)
@@ -62,20 +53,19 @@ const renderedTodos = function (todos, filter) {
 
 renderedTodos(todo, filters)
 
-document.querySelector("#todo-text").addEventListener('submit',function (e) {
+document.querySelector("#todo-text").addEventListener('submit',function (e) {    
     e.preventDefault()
-    const todoAdd = e.target.elements.todoTitle.value
-    addTodoFunc(todo,todoAdd)
-    e.target.elements.todoTitle.value = ''   
+    todo.push({
+        title: e.target.elements.todoTitle.value,
+        completed: false
+    })    
+    
+    localStorage.setItem('todos',JSON.stringify(todo))
+    renderedTodos(todo,filters)  
+    e.target.elements.todoTitle.value = '' 
     })
 
-function addTodoFunc (todos,todoToAdd) {
-    todos.push({
-       title: todoToAdd,
-       completed: false 
-    })
-    renderedTodos(todos,filters)
-}
+    
 
 document.querySelector("#hide-completed").addEventListener("change", function (e){
     filters.checked = e.target.checked
