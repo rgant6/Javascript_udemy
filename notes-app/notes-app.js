@@ -1,13 +1,4 @@
-const notes = [{
-    title: "My next trip",
-    body: "I would like to go to Spain"
-}, {
-    title: "Habits to work on",
-    body: "Eat healthy"
-}, {
-    title: "Home Improvments next",
-    body: "Build Porch"
-}]
+let notes = []
 
 const filters = {
     searchText:''
@@ -15,9 +6,9 @@ const filters = {
 }
 
 // check for existing saved data
-let notesJSON = localStorage.getItem('notes')
+const notesJSON = localStorage.getItem("notes")
 
-if (notesJSON !== null) {
+if(notesJSON != null){
     notes = JSON.parse(notesJSON)
 }
 
@@ -36,8 +27,7 @@ const renderNotes = function (notes, filter) {
         } else (
             noteE1.textContent = 'Unnamed Note'
         )
-
-        noteE1.textContent = note.title
+        
         noteE1.className = "note"
 
         document.querySelector('#notes').appendChild(noteE1)
@@ -53,7 +43,8 @@ document.querySelector("#create").addEventListener('click',function (e) {
     
     notes.push({
         title: '',
-        body: ''})
+        body: ''
+    })
     localStorage.setItem('notes',JSON.stringify(notes))
     renderNotes(notes,filters)
 })
