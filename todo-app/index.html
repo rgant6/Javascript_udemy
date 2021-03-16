@@ -8,22 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo</title>
 </head>
+
 <body>
-    
-    
-    <h1 id = "header">Todos</h1>
-    <input id="filter_todo" type="text" placeholder="Filter Todos">
+    <h1>Todos</h1>
+    <input id="search-text" type="text" placeholder="Filter todos">
     <label>
-        Hide Completed: <input id="hide-completed" type="checkbox">
+        <input type="checkbox" id="hide-completed"> Hide completed
     </label>
-    <div id="new_todos"></div>
-    <form id="todo-text">
-        <input type="text" placeholder="Add Todo" name = "todoTitle">
-        <button>Submit</button>
+    <div id="todos"></div>
+    <form id="new-todo">
+        <input type="text" placeholder="Something to do" name="text">
+        <button>Add Todo</button>
     </form>
-    <script src = "https://wzrd.in/standalone/uuid%2Fv4@latest"></script>
-    <script src='todo-functions.js'></script>
-    <script src = "todo-app.js"></script>
-    
+    <script src="http://wzrd.in/standalone/uuid%2Fv4@latest"></script>
+    <script src="todo-functions.js"></script>
+    <script src="todo-app.js"></script>
 </body>
+
 </html>

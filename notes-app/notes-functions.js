@@ -9,6 +9,17 @@ const returnExistingNotes = function (){
     }
 }
 
+// Removing note from list
+const removeNote = function(noteId){
+    const noteIndex = notes.findIndex(function (note) {
+        return note.id === noteId
+    })
+
+    if (noteIndex > -1){
+        notes.splice(noteIndex,1)
+    }
+}
+
 // generate the DOM structure for a note
 const generateNoteDOM = function (note){
 
@@ -20,6 +31,11 @@ const generateNoteDOM = function (note){
     // Set up the remove note button
     button.textContent = 'x'
     noteEl.appendChild(button)
+    button.addEventListener("click",function(){
+        removeNote(note.id)
+        notesSaveLocally(notes)
+        renderNotes(notes,filters)
+    })
 
     // Setup the note title text
     if (note.title.length > 0) {
