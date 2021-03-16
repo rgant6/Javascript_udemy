@@ -15,6 +15,7 @@ renderedTodos(todo, filters)
 document.querySelector("#todo-text").addEventListener('submit',function (e) {    
     e.preventDefault()
     todo.push({
+        id: uuidv4(),
         title: e.target.elements.todoTitle.value,
         completed: false
     })    

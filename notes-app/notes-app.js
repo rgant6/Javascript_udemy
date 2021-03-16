@@ -12,12 +12,15 @@ document.querySelector("#create").addEventListener('click',function (e) {
     // e.target.textContent = "The button was clicked"
     
     notes.push({
+        id: uuidv4(),
         title: '',
         body: ''
     })
     notesSaveLocally(notes)
     renderNotes(notes,filters)
 })
+
+
 
 document.querySelector('#search-text').addEventListener('input',function(e){
     filters.searchText = (e.target.value)
