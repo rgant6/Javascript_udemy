@@ -11,16 +11,28 @@ const returnExistingNotes = function (){
 
 // generate the DOM structure for a note
 const generateNoteDOM = function (note){
-    const noteE1 = document.createElement('p')
 
+    // Set up the 'remove note' button
+    const noteEl = document.createElement('div')
+    const textEl = document.createElement('span')
+    const button = document.createElement('button')
+
+    // Set up the remove note button
+    button.textContent = 'x'
+    noteEl.appendChild(button)
+
+    // Setup the note title text
     if (note.title.length > 0) {
-        noteE1.textContent = note.title
+        textEl.textContent = note.title
     } else {
-        noteE1.textContent = 'Unnamed Note'
+        textEl.textContent = 'Unnamed Note'
     }
 
-    noteE1.className = "note"
-    return noteE1
+    // Append the note to the div
+    noteEl.appendChild(textEl)
+
+    noteEl.className = "note"
+    return noteEl
 }
 
 // render application notes

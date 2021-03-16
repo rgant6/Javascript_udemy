@@ -29,8 +29,6 @@ document.querySelector("#hide-completed").addEventListener("change", function (e
     renderedTodos(todo,filters)
 })
 
-
-
 // const ps = document.querySelectorAll("p")
 
 // ps.forEach(function(ps) {

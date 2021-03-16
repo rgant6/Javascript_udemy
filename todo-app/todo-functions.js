@@ -1,4 +1,3 @@
-
 // get todos from local storage
 const getSavedTodos = function () {
     const todoJSON = localStorage.getItem("todos")
@@ -30,17 +29,33 @@ const saveTodos = function(incompleteTodos,filteredItems) {
 
 const appendTodo = function(incompleteTodos){
     incompleteTodos.forEach(function (todo) {
-        const p1 = document.createElement('p')
+        // establishing elements
+        const p1 = document.createElement('span')
+        const d1 = document.createElement('div')
+        const b1 = document.createElement('button')
+        const c1 = document.createElement('input')
+        
+        // setup checkbox type
+        c1.setAttribute("type","checkbox")
 
+        // setup todo text
         p1.textContent = todo.title
+        b1.textContent = 'x'
 
-        p1.className = "todo"
+        // appending the elements to the div
+        d1.appendChild(c1)
+        d1.appendChild(p1)
+        d1.appendChild(b1)
 
-        document.querySelector("#new_todos").appendChild(p1)
+        // appending everything to the html
+        document.querySelector("#new_todos").appendChild(d1)
     })
 }
 
 const renderedTodos = function (todos, filter) {
+    
+    // debug code using
+    // debugger
     const filteredItems = todos.filter(function (todo) {
         return todo.title.toLowerCase().includes(filter.searchText.toLowerCase())
     })

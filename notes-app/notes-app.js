@@ -28,10 +28,6 @@ document.querySelector("#filter-by").addEventListener("change",function (e){
     console.log(e.target.value)
 })
 
-
-
-
-
 // document.querySelector("#for-fun").addEventListener("change", function (e){
 //     console.log(e.target.checked)
 // })
