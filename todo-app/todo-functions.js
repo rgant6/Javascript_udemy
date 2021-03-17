@@ -15,12 +15,12 @@ const saveTodos = function (todos) {
 }
 
 const changeTodo = function (id){
-    const todoIndex = todos.findIndex(function (todo) {
+    const todo = todos.find(function (todo) {
         return todo.id === id
     })
 
-    if (todoIndex > -1) {
-        todos[todoIndex].completed = !todos[todoIndex].completed
+    if (todo !== undefined) {
+        todo.completed = !todo.completed
     }
 }
 
