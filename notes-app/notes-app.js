@@ -1,4 +1,4 @@
-const notes = returnExistingNotes()
+const notes = getSavedNotes()
 
 const filters = {
     searchText:''
@@ -10,14 +10,14 @@ renderNotes(notes,filters)
 document.querySelector("#create").addEventListener('click',function (e) {
     // changes the element for the actual target
     // e.target.textContent = "The button was clicked"
-    
+    const id = uuidv4()
     notes.push({
-        id: uuidv4(),
+        id: id,
         title: '',
         body: ''
     })
-    notesSaveLocally(notes)
-    renderNotes(notes,filters)
+    saveNotes(notes)
+    location.assign(`edit.html#${id}`)
 })
 
 document.querySelector('#search-text').addEventListener('input',function(e){
