@@ -36,17 +36,30 @@ window.addEventListener("storage",function (e) {
     }
 })
 
-const now = new Date()
-console.log(now.toString())
+const birthday = moment()
+birthday.date(22).month("Nov").year(1993)
+console.log(birthday.format('MMM D, YYYY'))
 
-console.log(`Year: ${now.getFullYear()}`)
-console.log(`Month: ${now.getMonth()}`)
-console.log(`Day: ${now.getDate()}`)
-console.log(`Hour: ${now.getHours()}`)
-console.log(`Minute: ${now.getMinutes()}`)
-console.log(`Seconds: ${now.getSeconds()}`)
+// const now = moment()
+// console.log(now.toString())
+// now.subtract(1,'week').subtract(20,'days')
 
+// now.minute(1)
+// console.log(now.format('MMMM Do YYYY'))
+// console.log(now.fromNow())
 
+// const nowTimeStamp = now.valueOf()
+// console.log(moment(nowTimeStamp).toString())
+
+// get time gets the number after the UNIX epoch
+// console.log(now.getTime())
+
+// console.log(`Year: ${now.getFullYear()}`)
+// console.log(`Month: ${now.getMonth()}`)
+// console.log(`Day: ${now.getDate()}`)
+// console.log(`Hour: ${now.getHours()}`)
+// console.log(`Minute: ${now.getMinutes()}`)
+// console.log(`Seconds: ${now.getSeconds()}`)
 
 // document.querySelector("#for-fun").addEventListener("change", function (e){
 //     console.log(e.target.checked)
