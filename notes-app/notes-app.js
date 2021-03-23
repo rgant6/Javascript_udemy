@@ -1,4 +1,4 @@
-const notes = getSavedNotes()
+let notes = getSavedNotes()
 
 const filters = {
     searchText:''
@@ -28,6 +28,25 @@ document.querySelector('#search-text').addEventListener('input',function(e){
 document.querySelector("#filter-by").addEventListener("change",function (e){
     console.log(e.target.value)
 })
+
+window.addEventListener("storage",function (e) {
+    if (e.key === 'notes'){
+        notes = JSON.parse(e.newValue)
+        renderNotes(notes,filters)
+    }
+})
+
+const now = new Date()
+console.log(now.toString())
+
+console.log(`Year: ${now.getFullYear()}`)
+console.log(`Month: ${now.getMonth()}`)
+console.log(`Day: ${now.getDate()}`)
+console.log(`Hour: ${now.getHours()}`)
+console.log(`Minute: ${now.getMinutes()}`)
+console.log(`Seconds: ${now.getSeconds()}`)
+
+
 
 // document.querySelector("#for-fun").addEventListener("change", function (e){
 //     console.log(e.target.checked)
