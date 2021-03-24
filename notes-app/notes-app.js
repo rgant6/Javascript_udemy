@@ -8,13 +8,17 @@ renderNotes(notes,filters)
 
 // event handlers
 document.querySelector("#create").addEventListener('click',function (e) {
+    const timeStamp = moment().valueOf()
+    
     // changes the element for the actual target
-    // e.target.textContent = "The button was clicked"
+
     const id = uuidv4()
     notes.push({
         id: id,
         title: '',
-        body: ''
+        body: '',
+        createdAt: timeStamp,
+        updatedAt: timeStamp
     })
     saveNotes(notes)
     location.assign(`edit.html#${id}`)
@@ -36,9 +40,7 @@ window.addEventListener("storage",function (e) {
     }
 })
 
-const birthday = moment()
-birthday.date(22).month("Nov").year(1993)
-console.log(birthday.format('MMM D, YYYY'))
+
 
 // const now = moment()
 // console.log(now.toString())
