@@ -1,5 +1,5 @@
 // read existing notes from local storage
-const getSavedNotes = function (){
+const getSavedNotes = () => {
     const notesJSON = localStorage.getItem("notes")
 
     if (notesJSON != null) {
@@ -9,11 +9,13 @@ const getSavedNotes = function (){
     }
 }
 
+const saveNotes = (notes) => {
+    localStorage.setItem('notes', JSON.stringify(notes))
+}
+
 // Removing note from list
-const removeNote = function(noteId){
-    const noteIndex = notes.findIndex(function (note) {
-        return note.id === noteId
-    })
+const removeNote = (noteId) => {
+    const noteIndex = notes.findIndex((note) => note.id === noteId)
 
     if (noteIndex > -1){
         notes.splice(noteIndex,1)
@@ -23,7 +25,7 @@ const removeNote = function(noteId){
 }
 
 // generate the DOM structure for a note
-const generateNoteDOM = function (note){
+const generateNoteDOM = (note) => {
 
     // Set up the 'remove note' button
     const noteEl = document.createElement('div')
@@ -55,9 +57,9 @@ const generateNoteDOM = function (note){
 }
 
 // sort your notes by one of three ways
-const sortNotes = function (notes,sortBy) {
+const sortNotes = (notes,sortBy) => {
     if (sortBy === "byEdited"){
-        return notes.sort(function (a,b){
+        return notes.sort((a,b) => {
             if (a.updatedAt > b.updatedAt){
                 return -1
             } else if (a.updatedAt < b.updatedAt){
@@ -67,7 +69,7 @@ const sortNotes = function (notes,sortBy) {
             }
         })
     }else if (sortBy === 'byCreated') {
-        return notes.sort(function (a,b) {
+        return notes.sort((a,b) => {
             if (a.createdAt < b.createdAt){
                 return -1
             }else if (a.createdAt > b.createdAt){
@@ -78,7 +80,7 @@ const sortNotes = function (notes,sortBy) {
             }
         })
     }else if (sortBy === "alphabetical"){
-        return notes.sort(function (a,b) {
+        return notes.sort((a,b) => {
             if (a.title.toLowerCase() < b.title.toLowerCase()){
                 return -1                
             }else if (a.title.toLowerCase() > b.title.toLowerCase()){
@@ -91,22 +93,15 @@ const sortNotes = function (notes,sortBy) {
 }
 
 // render application notes
-const renderNotes = function (notes, filter) {
+const renderNotes = (notes, filter) => {
     notes = sortNotes(notes,filters.sortBy)
-    const filteredNotes = notes.filter(function (note) {
-        return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
-    })
+    const filteredNotes = notes.filter((note) => note.title.toLowerCase().includes(filters.searchText.toLowerCase()))
 
     document.querySelector('#notes').innerHTML = ''
 
-    filteredNotes.forEach(function (note) {
+    filteredNotes.forEach((note) => {
         const noteE1 = generateNoteDOM(note)
         document.querySelector('#notes').appendChild(noteE1)
     })
 }
 
-const saveNotes = function (notes){
-
-    return localStorage.setItem('notes', JSON.stringify(notes))
-
-}
