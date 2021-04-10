@@ -3,5 +3,3 @@ const Hangman = function (word, remainingGuesses, guessedLetters = []){
     this.remainingGuesses = remainingGuesses
     this.guessedLetters = guessedLetters
 }
-
-

@@ -27,29 +27,25 @@ Hangman.prototype.guess = function (letterGuess) {
     }
 }
 
-const refreshGame = function (game) {  
-
-    const gameEl = document.createElement('div')
-    gameEl.className = "hangman"
-
-    const textEl1 = document.createElement('a')
-    const textEl2 = document.createElement('a')
-    textEl1.textContent = game.getPuzzle()
-    textEl2.textContent = `Remaining guesses: ${game.remainingGuesses}`
-    gameEl.appendChild(textEl1)
-    linebreak = document.createElement("br");
-    gameEl.appendChild(linebreak)
-    gameEl.appendChild(textEl2)
-    document.querySelector('#hangman').appendChild(gameEl)
-}
-
 game1 = new Hangman("california", 20)
-refreshGame(game1)
 game2 = new Hangman("bus", 6)
+
+ 
+const gameEl = document.createElement('div')
+gameEl.className = "hangman"
+const textEl1 = document.createElement('a')
+const textEl2 = document.createElement('a')
+gameEl.appendChild(textEl1)
+linebreak = document.createElement("br");
+gameEl.appendChild(linebreak)
+gameEl.appendChild(textEl2)
+textEl1.textContent = game1.getPuzzle()
+textEl2.textContent = `Remaining guesses: ${game1.remainingGuesses}`
+document.querySelector('#hangman').appendChild(gameEl)
 
 window.addEventListener('keypress', function (e) {
     const guess = String.fromCharCode(e.charCode)
     game1.guess(guess)
-    refreshGame(game1)
-
+    textEl1.textContent = game1.getPuzzle()
+    textEl2.textContent = `Remaining guesses: ${game1.remainingGuesses}`
 })
