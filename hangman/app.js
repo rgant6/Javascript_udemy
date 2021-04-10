@@ -21,16 +21,14 @@ Hangman.prototype.guess = function (letterGuess) {
     if (!this.guessedLetters.includes(letter)) {
 
         this.guessedLetters += letter
-        if (!this.word.includes(letter)) {
-            this.remainingGuesses -= 1
-        }
+        !this.word.includes(letter) ? this.remainingGuesses -= 1 : this.remainingGuesses 
+
     }
 }
 
-game1 = new Hangman("california", 20)
+game1 = new Hangman("cat", 3)
 game2 = new Hangman("bus", 6)
 
- 
 const gameEl = document.createElement('div')
 gameEl.className = "hangman"
 const textEl1 = document.createElement('a')
@@ -48,4 +46,5 @@ window.addEventListener('keypress', function (e) {
     game1.guess(guess)
     textEl1.textContent = game1.getPuzzle()
     textEl2.textContent = `Remaining guesses: ${game1.remainingGuesses}`
+    game1.playingStatus()
 })
