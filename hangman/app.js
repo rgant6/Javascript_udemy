@@ -38,13 +38,14 @@ linebreak = document.createElement("br");
 gameEl.appendChild(linebreak)
 gameEl.appendChild(textEl2)
 textEl1.textContent = game1.getPuzzle()
-textEl2.textContent = `Remaining guesses: ${game1.remainingGuesses}`
+
+textEl2.textContent = game1.getStatusMessage()
 document.querySelector('#hangman').appendChild(gameEl)
 
 window.addEventListener('keypress', function (e) {
     const guess = String.fromCharCode(e.charCode)
     game1.guess(guess)
     textEl1.textContent = game1.getPuzzle()
-    textEl2.textContent = `Remaining guesses: ${game1.remainingGuesses}`
     game1.playingStatus()
+    textEl2.textContent = game1.getStatusMessage()
 })
