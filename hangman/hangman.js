@@ -1,23 +1,38 @@
-const Hangman = function (word, remainingGuesses, guessedLetters = []){
-    this.word = word.toLowerCase().split('')
-    this.remainingGuesses = remainingGuesses
-    this.guessedLetters = guessedLetters
-    this.status - 'Playing'
-    this.message = ''
-}
+class Hangman {
+    constructor(word, remainingGuesses, guessedLetters = []){
+        this.word = word.toLowerCase().split('')
+        this.remainingGuesses = remainingGuesses
+        this.guessedLetters = guessedLetters
+        this.status - 'Playing'
+        this.message = ''
+    }
+    playingStatus(){
+        let count = 0
+        this.word.forEach(letter => {
+            this.guessedLetters.includes(letter) ? count += 1 : count
+        })
+        count === this.word.length ? this.status = 'Finished' : (this.remainingGuesses === 0 ? this.status = 'Failed' : this.status = 'Playing')
+        console.log(this.status)
+    }
+    getStatusMessage(){
+        const message = this.status === 'Finished' ? this.message = "Great work! You guessed the word!" : (this.status === 'Failed' ? this.message = `Nice try! The word was ${this.word.join('')}` : this.message = `Guesses Left: ${game1.remainingGuesses}`)
+        console.log(message)
+        return message
+    }
+    getPuzzle(){
+        let puzzle = ''
+        this.word.forEach((letter) => {
+            puzzle += this.guessedLetters.includes(letter) ? letter : ((letter === ' ') ? ' ' : '*')
+        })
+        return puzzle
+    }
+    guess(letterGuess){
+        const letter = letterGuess.toLowerCase()
+        if (!this.guessedLetters.includes(letter)) {
 
-Hangman.prototype.playingStatus = function () {
-    let count = 0
-    this.word.forEach(letter => {
-        this.guessedLetters.includes(letter) ? count+=1 : count
-    })
-    count === this.word.length ? this.status = 'Finished' : (this.remainingGuesses === 0 ? this.status = 'Failed' : this.status = 'Playing')
-    console.log(this.status) 
-    
-}
+            this.guessedLetters += letter
+            !this.word.includes(letter) ? this.remainingGuesses -= 1 : this.remainingGuesses
 
-Hangman.prototype.getStatusMessage = function(){
-    const message = this.status === 'Finished' ? this.message = "Great work! You guessed the word!" : (this.status === 'Failed' ? this.message = `Nice try! The word was ${this.word.join('')}` : this.message = `Guesses Left: ${game1.remainingGuesses}`)
-    console.log(message)
-    return message
+        }
+    }
 }
