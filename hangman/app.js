@@ -8,8 +8,7 @@
 // Number: myNumber --> Number.prototype --> Objet.prototype --> null
 // Boolean: myBoolean --> Boolean.prototype --> Objet.prototype --> null
 
-game1 = new Hangman("cat", 3)
-game2 = new Hangman("bus", 6)
+game1 = new Hangman("project", 5)
 
 const textEl1 = document.querySelector('#hangman')
 const textEl2 = document.querySelector('#guesses')
