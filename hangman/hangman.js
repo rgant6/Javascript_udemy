@@ -14,12 +14,11 @@ class Hangman {
         count === this.word.length ? this.status = 'Finished' : (this.remainingGuesses === 0 ? this.status = 'Failed' : this.status = 'Playing')
         console.log(this.status)
     }
-    getStatusMessage(){
+    get statusMessage(){
         const message = this.status === 'Finished' ? this.message = "Great work! You guessed the word!" : (this.status === 'Failed' ? this.message = `Nice try! The word was ${this.word.join('')}` : this.message = `Guesses Left: ${game1.remainingGuesses}`)
-        console.log(message)
         return message
     }
-    getPuzzle(){
+    get puzzle(){
         let puzzle = ''
         this.word.forEach((letter) => {
             puzzle += this.guessedLetters.includes(letter) ? letter : ((letter === ' ') ? ' ' : '*')

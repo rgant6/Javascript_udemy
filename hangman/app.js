@@ -12,13 +12,13 @@ game1 = new Hangman("project", 5)
 
 const textEl1 = document.querySelector('#hangman')
 const textEl2 = document.querySelector('#guesses')
-textEl1.textContent = game1.getPuzzle()
-textEl2.textContent = game1.getStatusMessage()
+textEl1.textContent = game1.puzzle
+textEl2.textContent = game1.statusMessage
 
 window.addEventListener('keypress', function (e) {
     const guess = String.fromCharCode(e.charCode)
     game1.guess(guess)
-    textEl1.textContent = game1.getPuzzle()
+    textEl1.textContent = game1.puzzle
     game1.playingStatus()
-    textEl2.textContent = game1.getStatusMessage()
+    textEl2.textContent = game1.statusMessage
 })
