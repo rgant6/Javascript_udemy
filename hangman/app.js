@@ -12,20 +12,6 @@
 // Number: myNumber --> Number.prototype --> Objet.prototype --> null
 // Boolean: myBoolean --> Boolean.prototype --> Objet.prototype --> null
 
-// Making an HTTP request
-const request = new XMLHttpRequest()
-
-request.addEventListener('readystatechange', (e) => {
-    if (e.target.readyState === 4 && e.target.status === 200) {
-        const data = JSON.parse(e.target.responseText)
-        console.log(data.puzzle)
-    }else if (e.target.readyState === 4)
-    console.log("An error has occured")
-})
-
-request.open('GET', 'http://puzzle.mead.io/puzzle/?wordCount=3')
-request.send()
-
 game1 = new Hangman("project parts", 5)
 
 const textEl1 = document.querySelector('#hangman')
@@ -41,4 +27,20 @@ window.addEventListener('keypress', (e) => {
     textEl2.textContent = game1.statusMessage
 })
 
+// Asynchronous execution
+getPuzzle((error, puzzle) => {
+    if (error){
+        console.log(`Error: ${error}`)
+    }else{
+        console.log(puzzle)
+    }
+})
+
+getCountry('MX',(error,country) => {
+    if(error){
+        console.log(`Error: ${error}`)
+    }else{
+        console.log(country)
+    }
+})
 
