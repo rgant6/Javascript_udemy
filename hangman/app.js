@@ -36,11 +36,11 @@ getPuzzle((error, puzzle) => {
     }
 })
 
-getCountry('MX',(error,country) => {
+getCountry('PL',(error,country) => {
     if(error){
         console.log(`Error: ${error}`)
     }else{
-        console.log(country)
+        console.log(`Country Name: ${country.name}`)
     }
 })
 
