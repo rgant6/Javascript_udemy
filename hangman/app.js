@@ -34,11 +34,9 @@ getPuzzle("2").then((puzzle) => {
     console.log(`Error: ${err}`) 
 })
 
-getCountry('PL',(error,country) => {
-    if(error){
-        console.log(`Error: ${error}`)
-    }else{
-        console.log(`Country Name: ${country.name}`)
-    }
+getCountry('PL').then((country) => {
+    console.log(`Country Name: ${country.name}`)
+},(err) => {
+        console.log(`Error: ${err}`)
 })
 
