@@ -9,8 +9,9 @@ class Hangman {
     playingStatus(){
         let count = 0
         this.word.forEach(letter => {
-            this.guessedLetters.includes(letter) ? count += 1 : count
+            this.guessedLetters.includes(letter) || letter === ' ' ? count += 1 : count
         })
+        console.log(count)
         count === this.word.length ? this.status = 'Finished' : (this.remainingGuesses === 0 ? this.status = 'Failed' : this.status = 'Playing')
         console.log(this.status)
     }
