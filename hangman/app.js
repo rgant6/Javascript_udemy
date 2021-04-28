@@ -28,15 +28,14 @@ window.addEventListener('keypress', (e) => {
 })
 
 // Asynchronous execution
-getPuzzle("2").then((puzzle) => {
-    console.log(puzzle)
-}, (err) => {
+getPuzzle("2").then((data) => {
+    console.log(data)
+}).catch((err) => {
     console.log(`Error: ${err}`) 
 })
 
-getCountry('PL').then((country) => {
-    console.log(`Country Name: ${country.name}`)
-},(err) => {
-        console.log(`Error: ${err}`)
+getCountry('US').then((country) => {
+    console.log(`Country Name: ${country}`)
+}).catch((err) => {
+    console.log(`Error: ${err}`)
 })
-

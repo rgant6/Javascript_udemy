@@ -41,10 +41,10 @@ getDataPromise(2).then((data) => {
     console.log(err)
 })
 
-getDataPromise('s').then((data) => {
+getDataPromise(2).then((data) => {
     return getDataPromise(data)
 }).then((data) =>{
-    return getDataPromise(data)
+    return 'This is some test data'
 }).then((data)=>{
     console.log(data)
 }).catch((err) => {
