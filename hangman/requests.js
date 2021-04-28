@@ -27,6 +27,16 @@ const getCountry = (countryCode) => {
     })
 }
 
+const getLocation = () => {
+    return fetch(`https://ipinfo.io/json?token=82102276a94b17`).then((response) => {
+        if (response.status === 200) {
+            return response.json()
+        } else {
+            throw new Error(`Unable to fetch your location`)
+        }
+    })
+}
+
 // Could also use the below instead of a forEach loop
 // const country = data.find((country) => country.alpha2Code === countryCode)
 // return country.name
