@@ -8,16 +8,17 @@ const getPuzzle = async (wordCount) => {
     }
 }
 
+const getCurrentCountry = async () => {
+    const location = await getLocation()
+    const country = await getCountry(location.country)
+    return country
+}
+
 const getCountry = async (countryCode) => {
     const response = await fetch(`https://restcountries.eu/rest/v2/all`)
     if (response.status === 200){
         const data = await response.json()
-        data.forEach(country => {
-            if (country.alpha2Code === countryCode) {
-                countryRet = country.name
-            }
-        })
-        return countryRet 
+        return data.find((country) => country.alpha2Code === countryCode)
     }else{
         throw new Error(`Unable to fetch the country`)
     }   
@@ -31,6 +32,7 @@ const getLocation = async () => {
             throw new Error(`Unable to fetch your location`)
         }
 }
+
 
 // Could also use the below instead of a forEach loop
 // const country = data.find((country) => country.alpha2Code === countryCode)
