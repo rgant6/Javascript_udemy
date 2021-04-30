@@ -1,8 +1,9 @@
 class Hangman {
-    constructor(word, remainingGuesses, guessedLetters = []){
+    constructor(word, remainingGuesses, guessedLetters = [], wrongLetters = ''){
         this.word = word.toLowerCase().split('')
         this.remainingGuesses = remainingGuesses
         this.guessedLetters = guessedLetters
+        this.wrongLetters = wrongLetters
         this.status - 'Playing'
         this.message = ''
     }
@@ -30,9 +31,17 @@ class Hangman {
         const letter = letterGuess.toLowerCase()
         if (!this.guessedLetters.includes(letter)) {
 
-            this.guessedLetters += letter
+            this.guessedLetters.push(letter)
             !this.word.includes(letter) ? this.remainingGuesses -= 1 : this.remainingGuesses
-
         }
+    }
+    get wrongGuesses() {
+        const message = this.guessedLetters.filter(el => {
+            return !this.word.find(obj => {
+                return el === obj
+
+            })
+        }) 
+        return message  
     }
 }
