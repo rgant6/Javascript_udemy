@@ -14,11 +14,26 @@
 
 let game1
 
+const puzzleEl = document.querySelector('#hangman')
+const guessesEl = document.querySelector('#guesses')
+const wrongEl = document.querySelector('#wrong')
+
 const render = () => {
 
-    document.querySelector('#hangman').textContent = game1.puzzle
-    document.querySelector('#guesses').textContent = game1.statusMessage
-    document.querySelector('#wrong').textContent = `Guessed Letters: ${game1.wrongGuesses}`
+     
+    puzzleEl.innerHTML = ''
+    guessesEl.textContent = game1.statusMessage
+    wrongEl.textContent = `Guessed Letters: ${game1.wrongGuesses}`
+
+    game1.puzzle.split("").forEach(letter => {
+        const letterEl = document.createElement('span')
+        letterEl.textContent = letter
+        puzzleEl.appendChild(letterEl)
+    })
+        // 
+    // .forEach(letter => {
+    //     console.log(letter)      
+    // })
 }
 
 window.addEventListener('keypress', (e) => {
