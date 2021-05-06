@@ -40,6 +40,13 @@
      display: flex;
      margin-bottom: 4.8rem;
 }
+
+.container {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0 1.6rem;
+}
+
 .wrong {
      display: flex;
      margin-top: 1.8rem;
