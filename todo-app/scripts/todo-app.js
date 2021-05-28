@@ -15,15 +15,19 @@ document.querySelector('#search-text').addEventListener('input', (e) => {
 })
 
 document.querySelector('#new-todo').addEventListener('submit', (e) => {
+    const newWord = e.target.elements.text.value.trim()
+    
     e.preventDefault()
-    todos.push({
-        id: uuidv4(),
-        text: e.target.elements.text.value,
-        completed: false
-    })
+    if (newWord.length > 0) {
+        todos.push({
+            id: uuidv4(),
+            text: newWord,
+            completed: false
+        })
+    }
     saveTodos(todos)
     renderTodos(todos, filters)
-    e.target.elements.text.value = ''
+    e.target.elements.text.value = ''   
 })
 
 document.querySelector('#hide-completed').addEventListener('change', (e) => {

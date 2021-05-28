@@ -220,4 +220,6 @@ a {
 
 .empty-message {
     margin: 3.2rem 0;
+    font-style: italic;
+    color: grey 
 }
