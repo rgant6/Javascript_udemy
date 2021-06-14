@@ -1,5 +1,14 @@
-console.log('utilities.js')
+// named export
+// Named we can have as many as we need
 
-export const add = (a,b) => a+b
+// default export 
+// default only one
 
-export const name = 'Ryan'
+const add = (a,b) => a+b
+
+const name = 'Ryan'
+
+const square = (x) => x*x
+
+export {add, name, square as default}
+// export default square
