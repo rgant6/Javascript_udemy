@@ -6,7 +6,7 @@
 
 const add = (a,b) => a+b
 
-const name = 'Ryan'
+const name = 'Beth'
 
 const square = (x) => x*x
 
